@@ -1,13 +1,15 @@
 <template>
 	<div
-		class="flex items-center justify-center h-dvh w-dvw bg-emerald-900 text-gray-50 font-extrabold text-9xl uppercase"
+		class="flex items-center justify-center h-dvh w-dvw bg-emerald-900 text-gray-50 font-extrabold uppercase"
+		:class="[text === defaultText ? 'text-4xl' : 'text-9xl']"
 	>
 		{{ text }}
 	</div>
 </template>
 
 <script setup lang="ts">
-	const text = ref('Naciśnij jakiś klawisz');
+	const defaultText = 'Naciśnij jakiś klawisz';
+	const text = ref(defaultText);
 
 	function speak(text: string) {
 		const speech = useSpeechSynthesis(text.toLowerCase(), {

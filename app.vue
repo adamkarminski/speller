@@ -10,7 +10,11 @@
 	const text = ref('Naciśnij jakiś klawisz');
 
 	function speak(text: string) {
-		const speech = useSpeechSynthesis(text, { lang: 'pl-PL' });
+		const speech = useSpeechSynthesis(text.toLowerCase(), {
+			lang: 'pl-PL',
+			rate: 0.4,
+			pitch: 0.8,
+		});
 		speech.speak();
 	}
 
@@ -24,6 +28,9 @@
 	);
 
 	onMounted(() => {
-		speak(text.value);
+		setTimeout(() => {
+			speak(text.value);
+		}, 10);
 	});
 </script>
+f
